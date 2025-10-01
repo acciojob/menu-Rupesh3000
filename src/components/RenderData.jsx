@@ -2,17 +2,24 @@ import React from "react";
 
 const RenderData = ({ filteredData }) => {
   return (
-    <div>
-      {filteredData.map(({ id, title, img, price, desc }) => (
-        <div key={id} className="product-card">
-          <img src={img} alt={title} />
-          <div className="product-content">
-            <div className="product-title">
-              <span>{title}</span>
-              <span className="product-price">${price}</span>
+    // Inside App.jsx (where you render filteredData)
+    <div className="render-data-container">
+      {filteredData.map((item) => (
+        <div className="menu">
+          <article
+            key={item.id}
+            data-test-id={`menu-item-${item.category}`}
+            className="menu-item"
+          >
+            <img src={item.img} alt={item.title} className="photo" />
+            <div className="item-info">
+              <header>
+                <h4>{item.title}</h4>
+                <h4 className="price">${item.price}</h4>
+              </header>
+              <p className="item-text">{item.desc}</p>
             </div>
-            <p className="product-desc">{desc}</p>
-          </div>
+          </article>
         </div>
       ))}
     </div>
